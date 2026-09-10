@@ -6,4 +6,5 @@
 * **Zainab Suleman** — Frontend & UI Contributor
 * **Malaika Munir** — Documentation & README Contributor
 * **Areeba Khan** — Code Enhancement & Testing Contributor
+
 Change done by ZAINAB SULEMAN
