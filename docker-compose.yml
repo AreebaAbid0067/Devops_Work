@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  main-web-service:
+    image: areebakhan49/my-app:version1
+    ports:
+      - "8080:80"
+    restart: always
+
+  new-web-module:
+    build: ./my_web_module
+    ports:
+      - "8081:80"
+    restart: always
