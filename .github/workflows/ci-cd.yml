@@ -34,7 +34,7 @@ jobs:
         uses: docker/login-action@v3
         with:
           username: ${{ secrets.ZAINAAB }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
+          password: ${{ secrets.DOCKER_PASSWORD  }}
 
       - name: Push Docker Image
         run: |
