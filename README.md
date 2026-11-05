@@ -29,3 +29,13 @@ This repository implements an automated CI/CD pipeline using GitHub Actions.
    ```bash
    git https://github.com/AreebaAbid0067/Devops_Work
    cd Devops_Work
+
+## Changelog
+
+### [4.0.0] - 2026-11-05
+- Added GitHub Actions workflow (`ci-cd.yml`) for automated build, test, and push stages.
+- Configured automated Docker Hub push and cloud deployment integration.
+- Updated README.md with CI/CD description, run/deploy instructions, and changelog.
+
+### [1.0.0] - Initial Setup
+- Initial repository setup and member role assignments.
