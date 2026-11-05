@@ -1,0 +1,58 @@
+name: DevOps CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+      - feature-zainab
+
+  workflow_dispatch:
+
+jobs:
+
+  build:
+    name: Build Docker Image
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Build Docker Image
+        run: |
+          docker build -t zainaab/devops-deliverable2:latest .
+
+      - name: Test Docker Container
+        run: |
+          docker run -d --name test-app -p 8080:80 zainaab/devops-deliverable2:latest
+          sleep 5
+          curl --fail http://localhost:8080
+          docker stop test-app
+          docker rm test-app
+
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.ZAINAAB }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Push Docker Image
+        run: |
+          docker push zainaab/devops-deliverable2:latest
+
+  deploy:
+    name: Verify Docker Hub Deployment
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.ZAINAAB }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Verify Published Image
+        run: |
+          docker pull zainaab/devops-deliverable2:latest
+          echo "Docker image successfully published and verified!"
