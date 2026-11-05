@@ -1,3 +1,4 @@
+
 name: DevOps CI/CD Pipeline
 
 on:
@@ -9,7 +10,6 @@ on:
   workflow_dispatch:
 
 jobs:
-
   build:
     name: Build Docker Image
     runs-on: ubuntu-latest
@@ -40,7 +40,7 @@ jobs:
         run: |
           docker push zainaab/devops-deliverable2:latest
 
-    deploy:
+  deploy:
     name: Verify Docker Hub Deployment
     needs: build
     runs-on: ubuntu-latest
